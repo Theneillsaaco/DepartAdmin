@@ -1,0 +1,33 @@
+﻿@page "/Inquilinos"
+
+@using DepartAdmin.DAL.Entities;
+@using CurrieTechnologies.Razor.SweetAlert2;
+@using DepartAdmin.Client.Services;
+
+@inject SweetAlertService Swal;
+@inject IInquilinoServivces inquilinoService;
+
+<h3>Inquilinos</h3>
+
+@code {
+    List<Inquilino>? listaInqulino = null;
+
+    protected override async Task OnlnitializedAsync()
+    {
+        listInquilino = await inquilinoService.List();
+    }
+
+    private async Task Delete(int id)
+    {
+        var result = await Swal.FireAsync(new SweetAlertOptions
+        {
+            Title = "Eliminar inquilino",
+            Text = "Deseas eliminar el inquilino?"
+            Icon = SweetAlertIco.Question,
+            ShowCancelButton = true
+
+        });
+
+        
+    }
+}
