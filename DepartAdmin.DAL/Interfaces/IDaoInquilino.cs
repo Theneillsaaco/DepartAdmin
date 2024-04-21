@@ -4,12 +4,12 @@ namespace DepartAdmin.DAL.Interfaces
 {
     public interface IDaoInquilino
     {
-        void SaveInquilino(Inquilino inquilino);
-        void UpdateInquilino(Inquilino inquilino);
-        void RemoveInquilino(Inquilino inquilino);
-        Inquilino GetInquilino(int Id);
-        List<Inquilino> GetInquilinos();
-        List<Inquilino> GetInquilinos(Func<Inquilino, bool> filter);
-        bool ExtistsInquilinos(Func<Inquilino, bool> filter);
+        void SaveInquilino(Inquilinos inquilino);
+        void UpdateInquilino(Inquilinos inquilino);
+        void RemoveInquilino(Inquilinos inquilino);
+        Inquilinos GetInquilino(int Id);
+        List<Inquilinos> GetInquilinos();
+        List<Inquilinos> GetInquilinos(Func<Inquilinos, bool> filter);
+        bool ExtistsInquilinos(Func<Inquilinos, bool> filter);
     }
 }

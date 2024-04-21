@@ -14,7 +14,7 @@ public partial class Pago : BaseEntity
 
     public bool Retrasado { get; set; }
 
-    public virtual Inquilino? User { get; set; }
+    public virtual Inquilinos? User { get; set; }
 
-    public virtual Inquilino? Inquilino { get; set; }
+    public virtual Inquilinos? Inquilino { get; set; }
 }

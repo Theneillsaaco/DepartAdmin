@@ -24,14 +24,14 @@ namespace DepartAdmin.Sever.Controllers
         [Route("List")]
         public async Task<IActionResult> List() 
         {
-            var responseApi = new ResponseAPI<List<Inquilino>>();
-            var listInquilino = new List<Inquilino>();
+            var responseApi = new ResponseAPI<List<Inquilinos>>();
+            var listInquilino = new List<Inquilinos>();
 
             try
             {
-                foreach(var item in await dbContext.Inquilino.ToListAsync())
+                foreach(var item in await dbContext.Inquilinos.ToListAsync())
                 {
-                    listInquilino.Add(new Inquilino
+                    listInquilino.Add(new Inquilinos
                     {
                         UserId = item.UserId,
                         FirstName = item.FirstName,
@@ -60,12 +60,12 @@ namespace DepartAdmin.Sever.Controllers
         [Route("Search/{id}")]
         public async Task<IActionResult> Search(int id)
         {
-            var responseApi = new ResponseAPI<Inquilino>();
-            var inquilino = new Inquilino();
+            var responseApi = new ResponseAPI<Inquilinos>();
+            var inquilino = new Inquilinos();
 
             try
             {
-                var dbInquilino = await dbContext.Inquilino.FirstOrDefaultAsync(x => x.UserId == id);
+                var dbInquilino = await dbContext.Inquilinos.FirstOrDefaultAsync(x => x.UserId == id);
 
                 if (dbInquilino is not null)
                 {
@@ -101,14 +101,14 @@ namespace DepartAdmin.Sever.Controllers
 
         [HttpPost]
         [Route("Save")]
-        public async Task<IActionResult> Save(Inquilino inquilino)
+        public async Task<IActionResult> Save(Inquilinos inquilino)
         {
             var responseApi = new ResponseAPI<int>();
             
 
             try
             {
-                var dbInquilino = new Inquilino
+                var dbInquilino = new Inquilinos
                 {
                     UserId = inquilino.UserId,
                     FirstName = inquilino.FirstName,
@@ -119,7 +119,7 @@ namespace DepartAdmin.Sever.Controllers
                     CreationDate = inquilino.CreationDate
                 };
 
-                dbContext.Inquilino.Add(dbInquilino);
+                dbContext.Inquilinos.Add(dbInquilino);
                 await dbContext.SaveChangesAsync();
 
                 if (dbInquilino.UserId != 0)
@@ -145,14 +145,14 @@ namespace DepartAdmin.Sever.Controllers
 
         [HttpPut]
         [Route("Edit/{id}")]
-        public async Task<IActionResult> Edit(Inquilino inquilino, int id)
+        public async Task<IActionResult> Edit(Inquilinos inquilino, int id)
         {
             var responseApi = new ResponseAPI<int>();
 
 
             try
             {
-                var dbInquilino = await dbContext.Inquilino.FirstOrDefaultAsync(e => e.UserId == id);
+                var dbInquilino = await dbContext.Inquilinos.FirstOrDefaultAsync(e => e.UserId == id);
         
                 
 
@@ -168,7 +168,7 @@ namespace DepartAdmin.Sever.Controllers
 
 
 
-                    dbContext.Inquilino.Update(dbInquilino);
+                    dbContext.Inquilinos.Update(dbInquilino);
                     await dbContext.SaveChangesAsync();
 
 
@@ -200,13 +200,13 @@ namespace DepartAdmin.Sever.Controllers
 
             try
             {
-                var dbInquilino = await dbContext.Inquilino.FirstOrDefaultAsync(e => e.UserId == id);
+                var dbInquilino = await dbContext.Inquilinos.FirstOrDefaultAsync(e => e.UserId == id);
 
 
 
                 if (dbInquilino is not null)
                 {
-                    dbContext.Inquilino.Remove(dbInquilino);
+                    dbContext.Inquilinos.Remove(dbInquilino);
                     await dbContext.SaveChangesAsync();
 
 

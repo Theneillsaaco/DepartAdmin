@@ -1,15 +1,16 @@
 ﻿using DepartAdmin.DAL.Core;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DepartAdmin.DAL.Entities;
 
-public partial class Inquilino : BaseEntity
+public partial class Inquilinos : BaseEntity
 {
-    public Inquilino()
+    
+    public Inquilinos()
     {
         Pagos = new HashSet<Pago>();
     }
-
 
     [Required(ErrorMessage = "El campo {0} es requerido.")]
     public string? FirstName { get; set; }
@@ -30,9 +31,9 @@ public partial class Inquilino : BaseEntity
     public string? NumeroTelefonico { get; set; }
     [Phone]
 
-    public bool UserMod { get; set; }
+    public bool? UserMod { get; set; }
 
-    public DateTime ModifyDate { get; set; }
+    public DateTime? ModifyDate { get; set; }
 
     public DateTime CreationDate { get; set; }
 
@@ -44,5 +45,6 @@ public partial class Inquilino : BaseEntity
 
     public bool Deleted { get; set; }
 
-    public virtual ICollection<Pago> Pagos { get; set; }
+    [NotMapped] // Ignorar Pagos para este contexto
+    public ICollection<Pago> Pagos { get; set; }
 }

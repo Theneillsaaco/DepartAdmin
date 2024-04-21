@@ -9,7 +9,7 @@ public partial class DepartAdminContext : DbContext
 
     #region"Entities"
 
-    public DbSet <Inquilino> Inquilino { get; set; }
+    public DbSet <Inquilinos> Inquilinos { get; set; }
     public DbSet <Pago> Pago { get; set; }
 
     #endregion
