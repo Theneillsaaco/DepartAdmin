@@ -1,0 +1,6 @@
+@DepartAdmin.Sever_HostAddress = http://localhost:5177
+
+GET {{DepartAdmin.Sever_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

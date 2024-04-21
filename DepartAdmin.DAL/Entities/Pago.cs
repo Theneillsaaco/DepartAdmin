@@ -1,5 +1,4 @@
 ﻿using DepartAdmin.DAL.Core;
-using DepartAdmin.DAL.Entities;
 
 namespace DepartAdmin.DAL.Entities;
 

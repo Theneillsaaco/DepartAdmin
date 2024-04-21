@@ -10,12 +10,21 @@ public partial class Inquilino : BaseEntity
         Pagos = new HashSet<Pago>();
     }
 
+
+    [Required(ErrorMessage = "El campo {0} es requerido.")]
     public string? FirstName { get; set; }
 
+
+    [Required(ErrorMessage = "El campo {0} es requerido.")]
     public string? LastName { get; set; }
 
+
+    [Required(ErrorMessage = "El campo {0} es requerido.")]
     public string? Cedula { get; set; }
 
+
+    [Required]
+    [Range(1, int.MaxValue, ErrorMessage = "El campo {0} es requerido.")]
     public int NumeroDepartamento { get; set; }
 
     public string? NumeroTelefonico { get; set; }
