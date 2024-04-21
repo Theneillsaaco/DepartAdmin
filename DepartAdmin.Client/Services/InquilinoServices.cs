@@ -25,7 +25,7 @@ namespace DepartAdmin.Client.Services
         }
         public async Task<Inquilinos> Search(int id)
         {
-            var result = await _http.GetFromJsonAsync<ResponseAPI<List<Inquilinos>>>($"api/Inquilino/Searh/{id}");
+            var result = await _http.GetFromJsonAsync<ResponseAPI<Inquilinos>>($"api/Inquilino/Searh/{id}");
 
             if (result!.response)
                 return result.Valor!;
