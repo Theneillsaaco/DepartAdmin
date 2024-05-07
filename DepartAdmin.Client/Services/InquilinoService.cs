@@ -3,18 +3,18 @@ using System.Net.Http.Json;
 
 namespace DepartAdmin.Client.Services
 {
-    public class InquilinoServices : IInquilinoServices
+    public class InquilinoService : IInquilinoService
     {
         private readonly HttpClient _http;
 
-        public InquilinoServices(HttpClient http)
+        public InquilinoService(HttpClient http)
         {
             _http = http;
         }
 
-        
 
-        public async Task<List<Inquilinos>> InquilinoList()
+
+        public async Task<List<Inquilinos>> List()
         {
             var result = await _http.GetFromJsonAsync<ResponseAPI<List<Inquilinos>>>("api/Inquilino/List");
 

@@ -5,83 +5,17 @@
 @using DepartAdmin.Client.Services;
 
 @inject SweetAlertService Swal;
-@inject IInquilinoServices inquilinoService;
+@inject IInquilinoService inquilinoService;
 
-<h3>Inquilinos</h3>
-
-<a class="btn btn-success btn-sm mb-3" href="Inquilino">Nuevo Inquilino</a>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Numero Departamento</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-
-        @if (listInquilino == null)
-        {
-            <tr>
-                <td colspan="5" align="center">
-                    <img style="width:50px" src"https: //media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" />
-                </td>
-            </tr>
-        }
-
-        else
-        {
-            @foreach(var item in listaInquilino)
-            {
-                <tr>
-                    <td>@item.UserId</td>
-                    <td>@item.FirsName</td>
-                    <td>@item.LastName</td>
-                    <td>@item.NumeroDepartamento</td>
-                    <td>
-                        <a class="btn btn-primary btn-sm" href="Inquilino/@item.UserId"> 
-                        <i class="oi oi-pencil"></i> 
-                        
-                        </a>
-                        <button type="button" class="btn btn-danger btn-sm ms-2" @onclick="(() => Delete(item.UserId))">
-                            <i class="oi oi-trash"></i>
-                        </button>
-
-                    </td>
-                </tr>
-            }
-        }
-    </tbody>
-</table>
+<h3>Inquilino</h3>
 
 @code {
-    List<Inquilino>? listaInqulino = null;
+    List<Inquilino>? listInquilino = null;
 
-    protected override async Task OnlnitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
         listInquilino = await inquilinoService.List();
     }
 
-    private async Task Delete(int id)
-    {
-        var result = await Swal.FireAsync(new SweetAlertOptions
-        {
-            Title = "Eliminar inquilino",
-            Text = "Deseas eliminar el inquilino?"
-            Icon = SweetAlertIco.Question,
-            ShowCancelButton = true
-        });
 
-        if (result.response)
-        {
-            var delete = await inquilinoService.Delete(id);
-
-            if(delete)
-            listInquilino = listInquilino.FindAll(e => e.UserId != id)
-        }
-        
-    }
 }
