@@ -45,6 +45,8 @@ public partial class Inquilinos : BaseEntity
 
     public bool Deleted { get; set; }
 
+
+
     [NotMapped] // Ignorar Pagos para este contexto
     public ICollection<Pago> Pagos { get; set; }
 }

@@ -14,7 +14,7 @@ namespace DepartAdmin.Client.Services
 
 
 
-        public async Task<List<Inquilinos>> List()
+        public async Task<List<Inquilinos>> InquilinoList()
         {
             var result = await _http.GetFromJsonAsync<ResponseAPI<List<Inquilinos>>>("api/Inquilino/List");
 

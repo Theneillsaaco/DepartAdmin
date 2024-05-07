@@ -4,7 +4,7 @@ namespace DepartAdmin.Client.Services
 {
     public interface IInquilinoService
     {
-        Task<List<Inquilinos>> List();
+        Task<List<Inquilinos>> InquilinoList();
         Task<Inquilinos> Search(int id);
         Task<int> Save(Inquilinos inquilinos);
         Task<int> Edit(Inquilinos inquilinos);

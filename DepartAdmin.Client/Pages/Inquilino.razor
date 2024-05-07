@@ -14,8 +14,29 @@
 
     protected override async Task OnInitializedAsync()
     {
-        listInquilino = await inquilinoService.List();
+        listInquilino = await inquilinoService.InquilinoList();
     }
 
+    private async Task Delete(int id)
+    {
+        var result = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Eleminar Inquilino",
+                Text = "Deseas elimiar el inquilino?",
+                Icon = SweetAlertIcon.Question,
+                ShowCancelButton = true
+    });
 
+        if (result.IsConfirmed)
+        {
+            var delete = await inquilinoService.Delete(id);
+
+            if (delete)
+                listInquilino = listInquilino!.FindAll(e => e.UserId != id);
+
+
+        }
+    }
+
+    
 }
